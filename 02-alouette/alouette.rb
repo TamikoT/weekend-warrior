@@ -23,18 +23,15 @@ class Alouette
 
       verse = ""
       2.times do
-        verse += "Je te plumerai #{array_of_parts[0]}.\n"
+        verse += "Je te plumerai #{PARTS[number]}.\n"
       end
       array_of_parts.each do |each_part|
         2.times do
           verse += "#{each_part}\n"
         end
       end
-
-      verse_end =
-      "Alouette!\nAlouette!\nA-a-a-ah\n\n"
-
-      return verse + verse_end
+      verse += "Alouette!\nAlouette!\nA-a-a-ah"
+      return verse
     end
 
     def sing
@@ -43,3 +40,4 @@ class Alouette
 
   # verse_begin =
   # "Alouette, gentille alouette,\nAlouette, je te plumerai.\n\n"
+  print Alouette.verse(3)
