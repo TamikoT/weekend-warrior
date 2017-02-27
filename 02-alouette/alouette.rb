@@ -1,42 +1,47 @@
 class Alouette
-  # initialize
-  attr_reader :line_parts
 
-  @@parts = ["la tête", "le bec", "les yeux", "le cou", "les ailes",
-    "les pattes"]
-  def initialize
+  PARTS = [ "la tête", "le bec", "les yeux", "le cou", "les ailes",
+    "les pattes" ]
+
+    def initialize
+    end
+
+    def self.lines_for_verse(number)
+      verse_parts = Array.new
+      # reverse order indices (stack)
+      for index in (number-1).downto(0)
+        verse_parts << "Et #{PARTS[index]}!"
+      end
+      return line_parts
+      # output(3): ["Et les yeux!", "Et le bec!", "Et la tête!"]
+    end
+
+    def verse(number)
+      array_of_parts = lines_for_verse(number)
+
+      verse_begin =
+      "Alouette, gentille alouette,\nAlouette, je te plumerai.\n\n"
+
+      verse_middle = ""
+      2.times do
+        verse_middle += "Je te plumerai #{array_of_parts[0]}.\n"
+      end
+
+      array_of_parts.each do |each_part|
+        2.times do
+          verse_middle += "#{each_part}\n"
+        end
+      end
+
+      verse_end =
+      "Alouette!\nAlouette!\nA-a-a-ah\n\n"
+
+      return verse_begin + verse_middle + verse_end
+    end
+
+    def sing
+    end
+
   end
 
-  # array of all changing parts in order
-
-  def lines_for_verse(number)
-#   until (1..6)include?(3)
-#     raise ArgumentError.new("Must be between 1 and 6")
-#   end
-  @line_parts = Array.new
-  for index in (number-1).downto(0)
-     @line_parts << "Et #{@@parts[index]}!"
-		end
-	end
-
-  # new array to hold all elements
-  # count down to get indices
-  # "Et" + value + "!"
-  # output: ["Et les yeux!", "Et le bec!", "Et la tête!"]
-
-  def verse
-  end
-
-  def sing
-  end
-
-  # REPEATING LINES
-  # pre-verse
-  ["Alouette, gentille alouette," "Alouette, je te plumerai."]
-  # post-verse
-  ["Alouette!", "Alouette!", "A-a-a-ah"]
-end
-
-a = Alouette.new
-a.lines_for_verse(2)
-print a.line_parts
+  puts Alouette.lines_for_verse(2)
