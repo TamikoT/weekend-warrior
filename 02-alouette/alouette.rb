@@ -3,7 +3,7 @@ class Alouette
   attr_accessor :verse_parts
 
   PARTS = [ "la tête", "le bec", "les yeux", "le cou", "les ailes",
-    "les pattes" ]
+    "les pattes", "la queue", "le dos"]
 
     def initialize
     end
@@ -34,10 +34,13 @@ class Alouette
       return verse
     end
 
-    def sing
+    def self.sing
+      whole_song = ""
+      refrain = "Alouette, gentille alouette,\nAlouette, je te plumerai."
+      whole_song += refrain
+      (0..7).each do |index|
+        whole_song += "\n\n#{verse(index)}\n\n#{refrain}"
+      end
+      return whole_song
     end
   end
-
-  # verse_begin =
-  # "Alouette, gentille alouette,\nAlouette, je te plumerai.\n\n"
-  print Alouette.verse(3)
