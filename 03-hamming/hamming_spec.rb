@@ -56,7 +56,6 @@ describe Hamming do
   end
 
   it "Check disallow second strand longer" do
-    skip
     expect( proc { Hamming.compute('ATA', 'AGTG') }).must_raise ArgumentError
   end
 end
